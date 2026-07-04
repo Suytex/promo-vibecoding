@@ -50,7 +50,28 @@
     /* ---------- Top nav / logo ---------- */
     .topnav { padding: 22px 0; }
     .topnav .wrap { display: flex; align-items: center; }
-    .logo { display: block; }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-bullet {
+      width: 14px;
+      height: 14px;
+      border-radius: var(--su-radius);
+      background: var(--su-gradient);
+      flex-shrink: 0;
+    }
+    .nav-wordmark {
+      font-family: var(--su-font-display);
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--su-white);
+    }
 
     /* ---------- Hero ---------- */
     .hero { padding: 90px 0; border-bottom: var(--su-border); }
@@ -230,7 +251,10 @@
 
   <nav class="topnav">
     <div class="wrap">
-      <img class="logo" src="https://cdn.jsdelivr.net/gh/Suytex/suytex-design@main/suytex-s-blanco.svg" alt="Suytex" width="28" height="28" />
+      <a href="#" class="nav-logo" aria-label="Suytex Academy — inicio">
+        <span class="nav-bullet" aria-hidden="true"></span>
+        <span class="nav-wordmark">Suytex</span>
+      </a>
     </div>
   </nav>
 
