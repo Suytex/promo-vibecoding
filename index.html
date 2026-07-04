@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vibe Coding Experience — Suytex Academy</title>
+  <meta name="description" content="Nunca has programado. En 5 días tendrás tu propia app en internet. Entrenamiento en vivo de Vibe Coding con AI, para emprendedores con ideas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — paleta suytex (definidos localmente:
+       este repo no carga suytex.css vía CDN)
+       ============================================================ */
+    :root {
+      --su-bg: #060a13;
+      --su-ink: #0b1220;
+      --su-white: #f8fafc;
+      --su-muted: #94a3b8;
+      --su-highlight: #34d399;
+      --su-radius: 4px;
+      --su-border: 1px solid rgba(148, 163, 184, 0.18);
+      --su-font-display: "Space Grotesk", system-ui, sans-serif;
+      --su-font-body: "Inter", system-ui, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--su-bg);
+      color: var(--su-white);
+      font-family: var(--su-font-body);
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+    section { padding: 72px 0; }
+
+    .kicker {
+      font-family: var(--su-font-display);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--su-highlight);
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 { font-family: var(--su-font-display); line-height: 1.15; }
+
+    h1 { font-size: clamp(34px, 6vw, 58px); font-weight: 700; }
+    h2 { font-size: clamp(26px, 4vw, 38px); font-weight: 700; margin-bottom: 14px; }
+    h3 { font-size: 17px; font-weight: 500; margin-bottom: 6px; }
+
+    .lead { font-size: 18px; color: var(--su-muted); max-width: 640px; }
+
+    .accent { color: var(--su-highlight); }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 110px 0 90px; border-bottom: var(--su-border); }
+    .hero .lead { margin: 22px 0 30px; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
+    .badge {
+      font-family: var(--su-font-display);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border: var(--su-border);
+      border-radius: var(--su-radius);
+      color: var(--su-muted);
+      background: var(--su-ink);
+    }
+
+    /* ---------- Botones CTA ---------- */
+    .btn {
+      display: inline-block;
+      font-family: var(--su-font-display);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      padding: 15px 30px;
+      border-radius: var(--su-radius);
+      background: var(--su-highlight);
+      color: #04110b;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px -10px rgba(52, 211, 153, 0.45);
+    }
+
+    /* ---------- Cards ---------- */
+    .grid { display: grid; gap: 16px; margin-top: 36px; }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card {
+      background: var(--su-ink);
+      border: var(--su-border);
+      border-radius: var(--su-radius);
+      padding: 24px;
+    }
+    .card p { color: var(--su-muted); font-size: 15px; }
+
+    /* ---------- Programa ---------- */
+    .day { display: flex; gap: 20px; align-items: baseline; padding: 20px 0; border-bottom: var(--su-border); }
+    .day:last-child { border-bottom: none; }
+    .day-num {
+      font-family: var(--su-font-display);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--su-highlight);
+      white-space: nowrap;
+      min-width: 64px;
+    }
+    .day p { color: var(--su-muted); font-size: 15px; }
+
+    /* ---------- Comparativa ---------- */
+    .vs-list { list-style: none; }
+    .vs-list li { padding: 9px 0; color: var(--su-muted); font-size: 15px; }
+    .vs-list li::before { content: "✕  "; color: #f87171; }
+    .vs-list.yes li::before { content: "✓  "; color: var(--su-highlight); }
+    .vs-list.yes li { color: var(--su-white); }
+
+    /* ---------- Oferta ---------- */
+    .offer {
+      background: var(--su-ink);
+      border: var(--su-border);
+      border-radius: var(--su-radius);
+      padding: 44px 34px;
+      text-align: center;
+      margin-top: 36px;
+    }
+    .price {
+      font-family: var(--su-font-display);
+      font-size: clamp(52px, 8vw, 76px);
+      font-weight: 700;
+      color: var(--su-highlight);
+      margin: 8px 0 4px;
+    }
+    .offer-list { list-style: none; margin: 26px auto 32px; max-width: 460px; text-align: left; }
+    .offer-list li { padding: 8px 0; color: var(--su-muted); font-size: 15px; border-bottom: var(--su-border); }
+    .offer-list li:last-child { border-bottom: none; }
+    .offer-list li::before { content: "✓  "; color: var(--su-highlight); }
+
+    footer {
+      border-top: var(--su-border);
+      padding: 36px 0 110px;
+      text-align: center;
+      color: var(--su-muted);
+      font-size: 13px;
+      font-family: var(--su-font-display);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    @keyframes su-fade-up {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================================================
+       BOTÓN FLOTANTE WHATSAPP — fixed, radius 4px (sin círculo/pill)
+       ============================================================ */
+    .wa-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 300;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      background: #25D366; /* excepción de paleta: verde de marca WhatsApp */
+      color: var(--su-white);
+      border-radius: var(--su-radius);
+      box-shadow: 0 10px 28px -8px rgba(0, 0, 0, 0.55);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .wa-float:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px -8px rgba(0, 0, 0, 0.6);
+    }
+    .wa-float svg { width: 26px; height: 26px; }
+
+    /* ============================================================
+       BURBUJA DEL FLOTANTE — invita al click
+       ============================================================ */
+    .wa-bubble {
+      position: fixed;
+      right: 86px;
+      bottom: 28px;
+      z-index: 300;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--su-ink);
+      border: var(--su-border);
+      border-radius: var(--su-radius);
+      padding: 11px 12px 11px 16px;
+      box-shadow: 0 10px 28px -8px rgba(0, 0, 0, 0.55);
+      opacity: 0;
+      animation: su-fade-up 0.5s ease-out 2.6s forwards;
+    }
+    .wa-bubble::after {
+      content: "";
+      position: absolute;
+      right: -6px;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      background: var(--su-ink);
+      border-top: var(--su-border);
+      border-right: var(--su-border);
+      transform: translateY(-50%) rotate(45deg);
+    }
+    .wa-bubble-text {
+      font-family: var(--su-font-body);
+      font-weight: 300;
+      font-size: 13px;
+      color: var(--su-white);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .wa-bubble-text:hover { color: var(--su-highlight); }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <p class="kicker">Suytex Academy · Entrenamiento en vivo</p>
+      <h1>Nunca has programado. En 5 días tendrás <span class="accent">tu propia app en internet</span>.</h1>
+      <p class="lead">Vibe Coding Experience: construye aplicaciones reales con AI, sin ser programador. Para emprendedores con ideas, no con código.</p>
+      <a id="ctaHero" href="#" class="btn" target="_blank" rel="noopener noreferrer">Quiero mi app en 5 días</a>
+      <div class="hero-badges">
+        <span class="badge">5 días en vivo</span>
+        <span class="badge">Sin código previo</span>
+        <span class="badge">Tu app publicada</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- EL PROBLEMA -->
+  <section>
+    <div class="wrap">
+      <p class="kicker">El problema</p>
+      <h2>Tienes la idea. Te falta quien la construya.</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Un desarrollador cobra $5,000+</h3>
+          <p>Y eso es solo el MVP. Cada cambio después, se factura aparte.</p>
+        </div>
+        <div class="card">
+          <h3>Las agencias tardan meses</h3>
+          <p>Y al final entregan algo que no era tu visión.</p>
+        </div>
+        <div class="card">
+          <h3>Aprender a programar toma años</h3>
+          <p>Años que tu idea no tiene. El mercado no espera.</p>
+        </div>
+        <div class="card">
+          <h3>Tu idea sigue en una libreta</h3>
+          <p>Mientras tanto, otros lanzan la app que tú imaginaste primero.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LA REALIDAD -->
+  <section style="border-top: var(--su-border); border-bottom: var(--su-border); background: var(--su-ink);">
+    <div class="wrap">
+      <p class="kicker">La realidad incómoda</p>
+      <h2>El vibe coding cambió las reglas.</h2>
+      <p class="lead">Hoy la AI escribe el código. Tú solo necesitas saber dirigirla. Personas sin background técnico están lanzando apps reales en días, no en años. La barrera ya no es el código: <strong style="color: var(--su-white);">es no saber que esto existe</strong>.</p>
+    </div>
+  </section>
+
+  <!-- LA SOLUCIÓN -->
+  <section>
+    <div class="wrap">
+      <p class="kicker">La solución</p>
+      <h2>5 días. Una app real. Tuya y en internet.</h2>
+      <p class="lead">Vibe Coding Experience es un entrenamiento práctico en vivo donde construyes TU aplicación desde cero con AI: sin instalar nada complicado, sin memorizar código, sin ser programador.</p>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>No teoría</h3>
+          <p>Construyes desde el minuto uno.</p>
+        </div>
+        <div class="card">
+          <h3>En vivo</h3>
+          <p>Acompañamiento real, sesión por sesión.</p>
+        </div>
+        <div class="card">
+          <h3>Resultado tangible</h3>
+          <p>Sales con tu app funcionando en internet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EL PROGRAMA -->
+  <section style="border-top: var(--su-border);">
+    <div class="wrap">
+      <p class="kicker">El programa</p>
+      <h2>5 días. De idea a app publicada.</h2>
+      <div class="day">
+        <span class="day-num">Día 1</span>
+        <div><h3>El nuevo paradigma</h3><p>Construyes tu primera app con AI en la primera sesión.</p></div>
+      </div>
+      <div class="day">
+        <span class="day-num">Día 2</span>
+        <div><h3>Tu proyecto toma forma</h3><p>Defines TU app y creas su interfaz real.</p></div>
+      </div>
+      <div class="day">
+        <span class="day-num">Día 3</span>
+        <div><h3>Tu app cobra vida</h3><p>Usuarios, login y base de datos sin escribir código.</p></div>
+      </div>
+      <div class="day">
+        <span class="day-num">Día 4</span>
+        <div><h3>Publicación</h3><p>Tu app EN VIVO en internet con tu propio dominio.</p></div>
+      </div>
+      <div class="day">
+        <span class="day-num">Día 5</span>
+        <div><h3>Nivel dueño</h3><p>Corriges con AI, mejoras tu app y presentas tu proyecto.</p></div>
+      </div>
+      <p class="lead" style="margin-top: 24px;">Cada día sales con un avance tangible de TU aplicación.</p>
+    </div>
+  </section>
+
+  <!-- TU TRANSFORMACIÓN -->
+  <section style="border-top: var(--su-border); background: var(--su-ink);">
+    <div class="wrap">
+      <p class="kicker">Tu transformación</p>
+      <h2>No sales con apuntes. Sales con una app.</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Tu propia app publicada</h3>
+          <p>Funcionando en internet, con tu dominio.</p>
+        </div>
+        <div class="card">
+          <h3>El stack completo dominado</h3>
+          <p>Lovable, Claude, Supabase, GitHub y Vercel — el kit del constructor moderno.</p>
+        </div>
+        <div class="card">
+          <h3>Independencia total</h3>
+          <p>La habilidad de construir tu próxima idea sin depender de nadie.</p>
+        </div>
+        <div class="card">
+          <h3>Comunidad</h3>
+          <p>Un grupo que sigue construyendo contigo después del entrenamiento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUÉ ES DIFERENTE -->
+  <section>
+    <div class="wrap">
+      <p class="kicker">Por qué es diferente</p>
+      <h2>Es un taller de construcción, no una clase de informática.</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Otros cursos</h3>
+          <ul class="vs-list">
+            <li>Teoría sin práctica</li>
+            <li>Videos pregrabados</li>
+            <li>Terminas sin nada tangible</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="accent">Vibe Coding Experience</h3>
+          <ul class="vs-list yes">
+            <li>Construyes desde el Día 1</li>
+            <li>Sesiones en vivo con instructor</li>
+            <li>Terminas con TU app en internet</li>
+            <li>Programas de verdad, con AI como tu developer</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMATO Y PARA QUIÉN -->
+  <section style="border-top: var(--su-border);">
+    <div class="wrap">
+      <p class="kicker">Formato y para quién</p>
+      <h2>Diseñado para gente ocupada, no para estudiantes.</h2>
+      <div class="hero-badges" style="margin-top: 24px;">
+        <span class="badge">5 días en vivo</span>
+        <span class="badge">2 horas por día</span>
+        <span class="badge">Cupos limitados</span>
+        <span class="badge">100% vía Zoom</span>
+        <span class="badge">Comunidad WhatsApp</span>
+      </div>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3 class="accent">Es para ti si…</h3>
+          <ul class="vs-list yes">
+            <li>Tienes una idea de app o negocio digital</li>
+            <li>Quieres crear herramientas para tu empresa</li>
+            <li>No sabes programar (justo por eso es para ti)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>No es para ti si…</h3>
+          <ul class="vs-list">
+            <li>Buscas un curso tradicional de programación</li>
+            <li>No piensas construir nada</li>
+            <li>Prefieres seguir pagando por cada idea que tienes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LA OFERTA -->
+  <section style="border-top: var(--su-border);">
+    <div class="wrap">
+      <p class="kicker" style="text-align: center;">La oferta</p>
+      <h2 style="text-align: center;">¿Cuánto vale tener tu idea funcionando en internet la próxima semana?</h2>
+      <div class="offer">
+        <p class="kicker" style="margin-bottom: 0;">Acceso completo</p>
+        <p class="price">$697</p>
+        <p style="color: var(--su-muted); font-size: 15px;">La inversión se paga con la primera app que construyas.</p>
+        <ul class="offer-list">
+          <li>5 clases en vivo + grabaciones de por vida</li>
+          <li>El stack completo de vibe coding dominado</li>
+          <li>Tu app publicada en internet con tu dominio</li>
+          <li>Prompts y recursos de cada sesión</li>
+          <li>Comunidad WhatsApp incluida</li>
+        </ul>
+        <a id="ctaOffer" href="#" class="btn" target="_blank" rel="noopener noreferrer">Reservar mi cupo ahora</a>
+      </div>
+      <p class="lead" style="text-align: center; max-width: none; margin-top: 40px;">Tu idea no va a construirse sola. <span class="accent">Pero tú sí puedes construirla.</span></p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">Vibe Coding · $697 · 5 días — Suytex Academy</div>
+  </footer>
+
+  <div id="waBubbleWrap" class="wa-bubble" role="complementary" aria-label="Invitación a escribirnos">
+    <a id="waBubble" href="#" class="wa-bubble-text" target="_blank" rel="noopener noreferrer">¿Hablamos? Escríbenos</a>
+  </div>
+
+  <a id="waFloat" href="#" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/>
+    </svg>
+  </a>
+
+  <script>
+  (function () {
+    /* Número ofuscado — no queda en texto plano en el HTML */
+    var WA = "https://wa.me/" + atob("MTgwOTQwODk5OTk=");
+    var TEXT = encodeURIComponent("Hola, vengo desde code.suytex.com y quiero saber más sobre Vibe Coding Experience");
+    var href = WA + "?text=" + TEXT;
+    var b = document.getElementById("waBubble");
+    var f = document.getElementById("waFloat");
+    if (b) b.href = href;
+    if (f) f.href = href;
+    /* CTAs de la página — mismo patrón ofuscado, cero wa.me en texto plano */
+    var c1 = document.getElementById("ctaHero");
+    var c2 = document.getElementById("ctaOffer");
+    if (c1) c1.href = href;
+    if (c2) c2.href = href;
+  })();
+  </script>
+
+</body>
+</html>
