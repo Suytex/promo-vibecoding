@@ -1,0 +1,186 @@
+<!-- section: hero -->
+<p class="kicker">Suytex Academy · Entrenamiento en vivo</p>
+
+# Nunca has programado. En 5 días tendrás <span class="accent">tu propia app en internet</span>.
+
+<p class="lead">Vibe Coding Experience: construye aplicaciones reales con AI, sin ser programador. Para emprendedores con ideas, no con código.</p>
+
+<div data-slot="cta-hero"></div>
+
+<div class="hero-badges">
+  <span class="badge">5 días en vivo</span>
+  <span class="badge">Sin código previo</span>
+  <span class="badge">Tu app publicada</span>
+</div>
+
+<!-- section: problema -->
+<p class="kicker">El problema</p>
+
+## Tienes la idea. Te falta quien la construya.
+
+<div class="grid grid-2">
+  <div class="card">
+    <h3>Un desarrollador cobra $5,000+</h3>
+    <p>Y eso es solo el MVP. Cada cambio después, se factura aparte.</p>
+  </div>
+  <div class="card">
+    <h3>Las agencias tardan meses</h3>
+    <p>Y al final entregan algo que no era tu visión.</p>
+  </div>
+  <div class="card">
+    <h3>Aprender a programar toma años</h3>
+    <p>Años que tu idea no tiene. El mercado no espera.</p>
+  </div>
+  <div class="card">
+    <h3>Tu idea sigue en una libreta</h3>
+    <p>Mientras tanto, otros lanzan la app que tú imaginaste primero.</p>
+  </div>
+</div>
+
+<!-- section: realidad -->
+<p class="kicker">La realidad incómoda</p>
+
+## El vibe coding cambió las reglas.
+
+<p class="lead">Hoy la AI escribe el código. Tú solo necesitas saber dirigirla. Personas sin background técnico están lanzando apps reales en días, no en años. La barrera ya no es el código: <strong style="color: var(--su-white);">es no saber que esto existe</strong>.</p>
+
+<!-- section: solucion -->
+<p class="kicker">La solución</p>
+
+## 5 días. Una app real. Tuya y en internet.
+
+<p class="lead">Vibe Coding Experience es un entrenamiento práctico en vivo donde construyes TU aplicación desde cero con AI: sin instalar nada complicado, sin memorizar código, sin ser programador.</p>
+
+<div class="grid grid-2">
+  <div class="card">
+    <h3>No teoría</h3>
+    <p>Construyes desde el minuto uno.</p>
+  </div>
+  <div class="card">
+    <h3>En vivo</h3>
+    <p>Acompañamiento real, sesión por sesión.</p>
+  </div>
+  <div class="card">
+    <h3>Resultado tangible</h3>
+    <p>Sales con tu app funcionando en internet.</p>
+  </div>
+</div>
+
+<!-- section: programa -->
+<p class="kicker">El programa</p>
+
+## 5 días. De idea a app publicada.
+
+| Día | Enfoque | Qué logras |
+| --- | --- | --- |
+| Día 1 | El nuevo paradigma | Construyes tu primera app con AI en la primera sesión. |
+| Día 2 | Tu proyecto toma forma | Defines TU app y creas su interfaz real. |
+| Día 3 | Tu app cobra vida | Usuarios, login y base de datos sin escribir código. |
+| Día 4 | Publicación | Tu app EN VIVO en internet con tu propio dominio. |
+| Día 5 | Nivel dueño | Corriges con AI, mejoras tu app y presentas tu proyecto. |
+
+<p class="lead" style="margin-top: 24px;">Cada día sales con un avance tangible de TU aplicación.</p>
+
+<!-- section: transformacion -->
+<p class="kicker">Tu transformación</p>
+
+## No sales con apuntes. Sales con una app.
+
+<div class="grid grid-2">
+  <div class="card">
+    <h3>Tu propia app publicada</h3>
+    <p>Funcionando en internet, con tu dominio.</p>
+  </div>
+  <div class="card">
+    <h3>El stack completo dominado</h3>
+    <p>Lovable, Claude, Supabase, GitHub y Vercel — el kit del constructor moderno.</p>
+  </div>
+  <div class="card">
+    <h3>Independencia total</h3>
+    <p>La habilidad de construir tu próxima idea sin depender de nadie.</p>
+  </div>
+  <div class="card">
+    <h3>Comunidad</h3>
+    <p>Un grupo que sigue construyendo contigo después del entrenamiento.</p>
+  </div>
+</div>
+
+<!-- section: comparativa -->
+<p class="kicker">Por qué es diferente</p>
+
+## Es un taller de construcción, no una clase de informática.
+
+<div class="grid grid-2">
+  <div class="card">
+    <h3>Otros cursos</h3>
+    <ul class="vs-list">
+      <li>Teoría sin práctica</li>
+      <li>Videos pregrabados</li>
+      <li>Terminas sin nada tangible</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3 class="accent">Vibe Coding Experience</h3>
+    <ul class="vs-list yes">
+      <li>Construyes desde el Día 1</li>
+      <li>Sesiones en vivo con instructor</li>
+      <li>Terminas con TU app en internet</li>
+      <li>Programas de verdad, con AI como tu developer</li>
+    </ul>
+  </div>
+</div>
+
+<!-- section: formato -->
+<p class="kicker">Formato y para quién</p>
+
+## Diseñado para gente ocupada, no para estudiantes.
+
+<div class="hero-badges" style="margin-top: 24px;">
+  <span class="badge">5 días en vivo</span>
+  <span class="badge">2 horas por día</span>
+  <span class="badge">Cupos limitados</span>
+  <span class="badge">100% vía Zoom</span>
+  <span class="badge">Comunidad WhatsApp</span>
+</div>
+
+<div class="grid grid-2">
+  <div class="card">
+    <h3 class="accent">Es para ti si…</h3>
+    <ul class="vs-list yes">
+      <li>Tienes una idea de app o negocio digital</li>
+      <li>Quieres crear herramientas para tu empresa</li>
+      <li>No sabes programar (justo por eso es para ti)</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>No es para ti si…</h3>
+    <ul class="vs-list">
+      <li>Buscas un curso tradicional de programación</li>
+      <li>No piensas construir nada</li>
+      <li>Prefieres seguir pagando por cada idea que tienes</li>
+    </ul>
+  </div>
+</div>
+
+<!-- section: oferta-intro -->
+<p class="kicker" style="text-align: center;">La oferta</p>
+
+## ¿Cuánto vale tener tu idea funcionando en internet la próxima semana?
+
+<!-- section: oferta -->
+<p class="kicker" style="margin-bottom: 0;">Acceso completo</p>
+<p class="price">$697</p>
+<p style="color: var(--su-muted); font-size: 15px;">La inversión se paga con la primera app que construyas.</p>
+
+<ul class="offer-list">
+  <li>5 clases en vivo + grabaciones de por vida</li>
+  <li>El stack completo de vibe coding dominado</li>
+  <li>Tu app publicada en internet con tu dominio</li>
+  <li>Prompts y recursos de cada sesión</li>
+  <li>Comunidad WhatsApp incluida</li>
+</ul>
+
+<div data-slot="cta-offer"></div>
+
+<!-- section: cierre -->
+<p class="lead" style="text-align: center; max-width: none;">Tu idea no va a construirse sola. <span class="accent">Pero tú sí puedes construirla.</span></p>

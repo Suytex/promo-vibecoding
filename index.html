@@ -8,23 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Suytex/suytex-design@main/suytex.css" />
   <style>
-    /* ============================================================
-       DESIGN TOKENS — paleta suytex (definidos localmente:
-       este repo no carga suytex.css vía CDN)
-       ============================================================ */
-    :root {
-      --su-bg: #060a13;
-      --su-ink: #0b1220;
-      --su-white: #f8fafc;
-      --su-muted: #94a3b8;
-      --su-highlight: #34d399;
-      --su-radius: 4px;
-      --su-border: 1px solid rgba(148, 163, 184, 0.18);
-      --su-font-display: "Space Grotesk", system-ui, sans-serif;
-      --su-font-body: "Inter", system-ui, sans-serif;
-    }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html { scroll-behavior: smooth; }
@@ -62,8 +47,13 @@
 
     .accent { color: var(--su-highlight); }
 
+    /* ---------- Top nav / logo ---------- */
+    .topnav { padding: 22px 0; }
+    .topnav .wrap { display: flex; align-items: center; }
+    .logo { display: block; }
+
     /* ---------- Hero ---------- */
-    .hero { padding: 110px 0 90px; border-bottom: var(--su-border); }
+    .hero { padding: 90px 0; border-bottom: var(--su-border); }
     .hero .lead { margin: 22px 0 30px; }
     .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
     .badge {
@@ -108,19 +98,22 @@
     }
     .card p { color: var(--su-muted); font-size: 15px; }
 
-    /* ---------- Programa ---------- */
-    .day { display: flex; gap: 20px; align-items: baseline; padding: 20px 0; border-bottom: var(--su-border); }
-    .day:last-child { border-bottom: none; }
-    .day-num {
+    /* ---------- Programa (tabla) ---------- */
+    .md table { width: 100%; border-collapse: collapse; margin-top: 28px; }
+    .md th, .md td { text-align: left; padding: 14px 12px; border-bottom: var(--su-border); font-size: 15px; color: var(--su-muted); }
+    .md thead th {
       font-family: var(--su-font-display);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
       color: var(--su-highlight);
-      white-space: nowrap;
-      min-width: 64px;
     }
-    .day p { color: var(--su-muted); font-size: 15px; }
+    .md td:first-child, .md th:first-child {
+      color: var(--su-white);
+      font-family: var(--su-font-display);
+      white-space: nowrap;
+    }
 
     /* ---------- Comparativa ---------- */
     .vs-list { list-style: none; }
@@ -235,219 +228,89 @@
 </head>
 <body>
 
+  <nav class="topnav">
+    <div class="wrap">
+      <img class="logo" src="https://cdn.jsdelivr.net/gh/Suytex/suytex-design@main/suytex-s-blanco.svg" alt="Suytex" width="28" height="28" />
+    </div>
+  </nav>
+
   <!-- HERO -->
   <header class="hero">
     <div class="wrap">
-      <p class="kicker">Suytex Academy · Entrenamiento en vivo</p>
-      <h1>Nunca has programado. En 5 días tendrás <span class="accent">tu propia app en internet</span>.</h1>
-      <p class="lead">Vibe Coding Experience: construye aplicaciones reales con AI, sin ser programador. Para emprendedores con ideas, no con código.</p>
-      <a id="ctaHero" href="#" class="btn" target="_blank" rel="noopener noreferrer">Quiero mi app en 5 días</a>
-      <div class="hero-badges">
-        <span class="badge">5 días en vivo</span>
-        <span class="badge">Sin código previo</span>
-        <span class="badge">Tu app publicada</span>
-      </div>
+      <div id="sec-hero" class="md"></div>
     </div>
   </header>
 
   <!-- EL PROBLEMA -->
   <section>
     <div class="wrap">
-      <p class="kicker">El problema</p>
-      <h2>Tienes la idea. Te falta quien la construya.</h2>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>Un desarrollador cobra $5,000+</h3>
-          <p>Y eso es solo el MVP. Cada cambio después, se factura aparte.</p>
-        </div>
-        <div class="card">
-          <h3>Las agencias tardan meses</h3>
-          <p>Y al final entregan algo que no era tu visión.</p>
-        </div>
-        <div class="card">
-          <h3>Aprender a programar toma años</h3>
-          <p>Años que tu idea no tiene. El mercado no espera.</p>
-        </div>
-        <div class="card">
-          <h3>Tu idea sigue en una libreta</h3>
-          <p>Mientras tanto, otros lanzan la app que tú imaginaste primero.</p>
-        </div>
-      </div>
+      <div id="sec-problema" class="md"></div>
     </div>
   </section>
 
   <!-- LA REALIDAD -->
   <section style="border-top: var(--su-border); border-bottom: var(--su-border); background: var(--su-ink);">
     <div class="wrap">
-      <p class="kicker">La realidad incómoda</p>
-      <h2>El vibe coding cambió las reglas.</h2>
-      <p class="lead">Hoy la AI escribe el código. Tú solo necesitas saber dirigirla. Personas sin background técnico están lanzando apps reales en días, no en años. La barrera ya no es el código: <strong style="color: var(--su-white);">es no saber que esto existe</strong>.</p>
+      <div id="sec-realidad" class="md"></div>
     </div>
   </section>
 
   <!-- LA SOLUCIÓN -->
   <section>
     <div class="wrap">
-      <p class="kicker">La solución</p>
-      <h2>5 días. Una app real. Tuya y en internet.</h2>
-      <p class="lead">Vibe Coding Experience es un entrenamiento práctico en vivo donde construyes TU aplicación desde cero con AI: sin instalar nada complicado, sin memorizar código, sin ser programador.</p>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>No teoría</h3>
-          <p>Construyes desde el minuto uno.</p>
-        </div>
-        <div class="card">
-          <h3>En vivo</h3>
-          <p>Acompañamiento real, sesión por sesión.</p>
-        </div>
-        <div class="card">
-          <h3>Resultado tangible</h3>
-          <p>Sales con tu app funcionando en internet.</p>
-        </div>
-      </div>
+      <div id="sec-solucion" class="md"></div>
     </div>
   </section>
 
   <!-- EL PROGRAMA -->
   <section style="border-top: var(--su-border);">
     <div class="wrap">
-      <p class="kicker">El programa</p>
-      <h2>5 días. De idea a app publicada.</h2>
-      <div class="day">
-        <span class="day-num">Día 1</span>
-        <div><h3>El nuevo paradigma</h3><p>Construyes tu primera app con AI en la primera sesión.</p></div>
-      </div>
-      <div class="day">
-        <span class="day-num">Día 2</span>
-        <div><h3>Tu proyecto toma forma</h3><p>Defines TU app y creas su interfaz real.</p></div>
-      </div>
-      <div class="day">
-        <span class="day-num">Día 3</span>
-        <div><h3>Tu app cobra vida</h3><p>Usuarios, login y base de datos sin escribir código.</p></div>
-      </div>
-      <div class="day">
-        <span class="day-num">Día 4</span>
-        <div><h3>Publicación</h3><p>Tu app EN VIVO en internet con tu propio dominio.</p></div>
-      </div>
-      <div class="day">
-        <span class="day-num">Día 5</span>
-        <div><h3>Nivel dueño</h3><p>Corriges con AI, mejoras tu app y presentas tu proyecto.</p></div>
-      </div>
-      <p class="lead" style="margin-top: 24px;">Cada día sales con un avance tangible de TU aplicación.</p>
+      <div id="sec-programa" class="md"></div>
     </div>
   </section>
 
   <!-- TU TRANSFORMACIÓN -->
   <section style="border-top: var(--su-border); background: var(--su-ink);">
     <div class="wrap">
-      <p class="kicker">Tu transformación</p>
-      <h2>No sales con apuntes. Sales con una app.</h2>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>Tu propia app publicada</h3>
-          <p>Funcionando en internet, con tu dominio.</p>
-        </div>
-        <div class="card">
-          <h3>El stack completo dominado</h3>
-          <p>Lovable, Claude, Supabase, GitHub y Vercel — el kit del constructor moderno.</p>
-        </div>
-        <div class="card">
-          <h3>Independencia total</h3>
-          <p>La habilidad de construir tu próxima idea sin depender de nadie.</p>
-        </div>
-        <div class="card">
-          <h3>Comunidad</h3>
-          <p>Un grupo que sigue construyendo contigo después del entrenamiento.</p>
-        </div>
-      </div>
+      <div id="sec-transformacion" class="md"></div>
     </div>
   </section>
 
   <!-- POR QUÉ ES DIFERENTE -->
   <section>
     <div class="wrap">
-      <p class="kicker">Por qué es diferente</p>
-      <h2>Es un taller de construcción, no una clase de informática.</h2>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>Otros cursos</h3>
-          <ul class="vs-list">
-            <li>Teoría sin práctica</li>
-            <li>Videos pregrabados</li>
-            <li>Terminas sin nada tangible</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3 class="accent">Vibe Coding Experience</h3>
-          <ul class="vs-list yes">
-            <li>Construyes desde el Día 1</li>
-            <li>Sesiones en vivo con instructor</li>
-            <li>Terminas con TU app en internet</li>
-            <li>Programas de verdad, con AI como tu developer</li>
-          </ul>
-        </div>
-      </div>
+      <div id="sec-comparativa" class="md"></div>
     </div>
   </section>
 
   <!-- FORMATO Y PARA QUIÉN -->
   <section style="border-top: var(--su-border);">
     <div class="wrap">
-      <p class="kicker">Formato y para quién</p>
-      <h2>Diseñado para gente ocupada, no para estudiantes.</h2>
-      <div class="hero-badges" style="margin-top: 24px;">
-        <span class="badge">5 días en vivo</span>
-        <span class="badge">2 horas por día</span>
-        <span class="badge">Cupos limitados</span>
-        <span class="badge">100% vía Zoom</span>
-        <span class="badge">Comunidad WhatsApp</span>
-      </div>
-      <div class="grid grid-2">
-        <div class="card">
-          <h3 class="accent">Es para ti si…</h3>
-          <ul class="vs-list yes">
-            <li>Tienes una idea de app o negocio digital</li>
-            <li>Quieres crear herramientas para tu empresa</li>
-            <li>No sabes programar (justo por eso es para ti)</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>No es para ti si…</h3>
-          <ul class="vs-list">
-            <li>Buscas un curso tradicional de programación</li>
-            <li>No piensas construir nada</li>
-            <li>Prefieres seguir pagando por cada idea que tienes</li>
-          </ul>
-        </div>
-      </div>
+      <div id="sec-formato" class="md"></div>
     </div>
   </section>
 
   <!-- LA OFERTA -->
   <section style="border-top: var(--su-border);">
     <div class="wrap">
-      <p class="kicker" style="text-align: center;">La oferta</p>
-      <h2 style="text-align: center;">¿Cuánto vale tener tu idea funcionando en internet la próxima semana?</h2>
+      <div id="sec-oferta-intro" class="md" style="text-align: center;"></div>
       <div class="offer">
-        <p class="kicker" style="margin-bottom: 0;">Acceso completo</p>
-        <p class="price">$697</p>
-        <p style="color: var(--su-muted); font-size: 15px;">La inversión se paga con la primera app que construyas.</p>
-        <ul class="offer-list">
-          <li>5 clases en vivo + grabaciones de por vida</li>
-          <li>El stack completo de vibe coding dominado</li>
-          <li>Tu app publicada en internet con tu dominio</li>
-          <li>Prompts y recursos de cada sesión</li>
-          <li>Comunidad WhatsApp incluida</li>
-        </ul>
-        <a id="ctaOffer" href="#" class="btn" target="_blank" rel="noopener noreferrer">Reservar mi cupo ahora</a>
+        <div id="sec-oferta" class="md"></div>
+        <template id="tpl-cta-offer">
+          <a id="ctaOffer" href="#" class="btn" target="_blank" rel="noopener noreferrer">Reservar mi cupo ahora</a>
+        </template>
       </div>
-      <p class="lead" style="text-align: center; max-width: none; margin-top: 40px;">Tu idea no va a construirse sola. <span class="accent">Pero tú sí puedes construirla.</span></p>
+      <div id="sec-cierre" class="md" style="margin-top: 40px;"></div>
     </div>
   </section>
 
   <footer>
     <div class="wrap">Vibe Coding · $697 · 5 días — Suytex Academy</div>
   </footer>
+
+  <template id="tpl-cta-hero">
+    <a id="ctaHero" href="#" class="btn" target="_blank" rel="noopener noreferrer">Quiero mi app en 5 días</a>
+  </template>
 
   <div id="waBubbleWrap" class="wa-bubble" role="complementary" aria-label="Invitación a escribirnos">
     <a id="waBubble" href="#" class="wa-bubble-text" target="_blank" rel="noopener noreferrer">¿Hablamos? Escríbenos</a>
@@ -459,21 +322,90 @@
     </svg>
   </a>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
   <script>
   (function () {
-    /* Número ofuscado — no queda en texto plano en el HTML */
-    var WA = "https://wa.me/" + atob("MTgwOTQwODk5OTk=");
-    var TEXT = encodeURIComponent("Hola, vengo desde code.suytex.com y quiero saber más sobre Vibe Coding Experience");
-    var href = WA + "?text=" + TEXT;
-    var b = document.getElementById("waBubble");
-    var f = document.getElementById("waFloat");
-    if (b) b.href = href;
-    if (f) f.href = href;
-    /* CTAs de la página — mismo patrón ofuscado, cero wa.me en texto plano */
-    var c1 = document.getElementById("ctaHero");
-    var c2 = document.getElementById("ctaOffer");
-    if (c1) c1.href = href;
-    if (c2) c2.href = href;
+    /* ------------------------------------------------------------
+       Contenido: se carga desde assets/content.txt (ruta relativa)
+       y se renderiza sección por sección con Marked.js.
+       Editar el copy = editar el .txt. El HTML no se toca.
+       ------------------------------------------------------------ */
+    function parseSections(raw) {
+      var sections = {};
+      var re = /<!--\s*section:\s*([\w-]+)\s*-->/g;
+      var matches = [];
+      var m;
+      while ((m = re.exec(raw)) !== null) {
+        matches.push({ key: m[1], contentStart: re.lastIndex, markerStart: m.index });
+      }
+      for (var i = 0; i < matches.length; i++) {
+        var start = matches[i].contentStart;
+        var end = (i + 1 < matches.length) ? matches[i + 1].markerStart : raw.length;
+        sections[matches[i].key] = raw.slice(start, end).trim();
+      }
+      return sections;
+    }
+
+    function renderSection(sections, key, mountId) {
+      try {
+        var mount = document.getElementById(mountId);
+        if (!mount) return;
+        var md = sections[key];
+        if (md == null) throw new Error('Sección "' + key + '" no encontrada en content.txt');
+        mount.innerHTML = marked.parse(md);
+      } catch (e) {
+        console.error('Error renderizando sección "' + key + '":', e);
+      }
+    }
+
+    function slotIn(templateId, slotSelector) {
+      try {
+        var tpl = document.getElementById(templateId);
+        var slot = document.querySelector(slotSelector);
+        if (tpl && slot) slot.replaceWith(tpl.content.cloneNode(true));
+      } catch (e) {
+        console.error('No se pudo insertar el CTA "' + templateId + '":', e);
+      }
+    }
+
+    function wireWhatsApp() {
+      /* Número ofuscado — no queda en texto plano en el HTML */
+      var WA = "https://wa.me/" + atob("MTgwOTQwODk5OTk=");
+      var TEXT = encodeURIComponent("Hola, vengo desde code.suytex.com y quiero saber más sobre Vibe Coding Experience");
+      var href = WA + "?text=" + TEXT;
+      ["waBubble", "waFloat", "ctaHero", "ctaOffer"].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.href = href;
+      });
+    }
+
+    fetch('assets/content.txt')
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.text();
+      })
+      .then(function (raw) {
+        var sections = parseSections(raw);
+        renderSection(sections, 'hero', 'sec-hero');
+        renderSection(sections, 'problema', 'sec-problema');
+        renderSection(sections, 'realidad', 'sec-realidad');
+        renderSection(sections, 'solucion', 'sec-solucion');
+        renderSection(sections, 'programa', 'sec-programa');
+        renderSection(sections, 'transformacion', 'sec-transformacion');
+        renderSection(sections, 'comparativa', 'sec-comparativa');
+        renderSection(sections, 'formato', 'sec-formato');
+        renderSection(sections, 'oferta-intro', 'sec-oferta-intro');
+        renderSection(sections, 'oferta', 'sec-oferta');
+        renderSection(sections, 'cierre', 'sec-cierre');
+
+        slotIn('tpl-cta-hero', '[data-slot="cta-hero"]');
+        slotIn('tpl-cta-offer', '[data-slot="cta-offer"]');
+        wireWhatsApp();
+      })
+      .catch(function (e) {
+        console.error('No se pudo cargar assets/content.txt:', e);
+        wireWhatsApp();
+      });
   })();
   </script>
 
