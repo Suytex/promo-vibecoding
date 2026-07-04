@@ -9,6 +9,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Suytex/suytex-design@main/suytex.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/favicon-180.png">
+  <meta property="og:title" content="Vibe Coding Experience — Suytex Academy" />
+  <meta property="og:description" content="Nunca has programado. En 5 días tendrás tu propia app en internet. Entrenamiento en vivo de Vibe Coding con AI, para emprendedores con ideas." />
+  <meta property="og:url" content="https://code.suytex.com" />
+  <meta property="og:image" content="https://code.suytex.com/assets/suytex-logo.png" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -75,6 +81,7 @@
 
     /* ---------- Hero ---------- */
     .hero { padding: 90px 0; border-bottom: var(--su-border); }
+    .hero-logo { display: block; width: 84px; height: 84px; margin-bottom: 40px; }
     .hero .lead { margin: 22px 0 30px; }
     .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
     .badge {
@@ -174,6 +181,7 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
     }
+    .footer-brand { display: flex; align-items: center; justify-content: center; gap: 10px; }
 
     @keyframes su-fade-up {
       from { opacity: 0; transform: translateY(8px); }
@@ -261,6 +269,7 @@
   <!-- HERO -->
   <header class="hero">
     <div class="wrap">
+      <img class="hero-logo" src="assets/suytex-logo.png" width="84" height="84" alt="Suytex" />
       <div id="sec-hero" class="md"></div>
     </div>
   </header>
@@ -329,7 +338,10 @@
   </section>
 
   <footer>
-    <div class="wrap">Vibe Coding · $697 · 5 días — Suytex Academy</div>
+    <div class="wrap footer-brand">
+      <img src="assets/suytex-logo.png" width="28" height="28" alt="Suytex" />
+      <span>Vibe Coding · $697 · 5 días — Suytex Academy</span>
+    </div>
   </footer>
 
   <template id="tpl-cta-hero">
