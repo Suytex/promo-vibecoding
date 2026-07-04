@@ -267,7 +267,7 @@
   </nav>
 
   <!-- HERO -->
-  <header class="hero">
+  <header class="hero" id="hero">
     <div class="wrap">
       <img class="hero-logo" src="assets/suytex-logo.png" width="84" height="84" alt="Suytex" />
       <div id="sec-hero" class="md"></div>
@@ -275,49 +275,49 @@
   </header>
 
   <!-- EL PROBLEMA -->
-  <section>
+  <section id="problema">
     <div class="wrap">
       <div id="sec-problema" class="md"></div>
     </div>
   </section>
 
   <!-- LA REALIDAD -->
-  <section style="border-top: var(--su-border); border-bottom: var(--su-border); background: var(--su-ink);">
+  <section id="realidad" style="border-top: var(--su-border); border-bottom: var(--su-border); background: var(--su-ink);">
     <div class="wrap">
       <div id="sec-realidad" class="md"></div>
     </div>
   </section>
 
   <!-- LA SOLUCIÓN -->
-  <section>
+  <section id="solucion">
     <div class="wrap">
       <div id="sec-solucion" class="md"></div>
     </div>
   </section>
 
   <!-- EL PROGRAMA -->
-  <section style="border-top: var(--su-border);">
+  <section id="programa" style="border-top: var(--su-border);">
     <div class="wrap">
       <div id="sec-programa" class="md"></div>
     </div>
   </section>
 
   <!-- TU TRANSFORMACIÓN -->
-  <section style="border-top: var(--su-border); background: var(--su-ink);">
+  <section id="transformacion" style="border-top: var(--su-border); background: var(--su-ink);">
     <div class="wrap">
       <div id="sec-transformacion" class="md"></div>
     </div>
   </section>
 
   <!-- POR QUÉ ES DIFERENTE -->
-  <section>
+  <section id="diferencia">
     <div class="wrap">
       <div id="sec-comparativa" class="md"></div>
     </div>
   </section>
 
   <!-- FORMATO Y PARA QUIÉN -->
-  <section style="border-top: var(--su-border);">
+  <section id="formato" style="border-top: var(--su-border);">
     <div class="wrap">
       <div id="sec-formato" class="md"></div>
     </div>
@@ -326,14 +326,18 @@
   <!-- LA OFERTA -->
   <section style="border-top: var(--su-border);">
     <div class="wrap">
-      <div id="sec-oferta-intro" class="md" style="text-align: center;"></div>
-      <div class="offer">
-        <div id="sec-oferta" class="md"></div>
-        <template id="tpl-cta-offer">
-          <a id="ctaOffer" href="#" class="btn" target="_blank" rel="noopener noreferrer">Reservar mi cupo ahora</a>
-        </template>
+      <div id="oferta">
+        <div id="sec-oferta-intro" class="md" style="text-align: center;"></div>
+        <div class="offer">
+          <div id="sec-oferta" class="md"></div>
+          <template id="tpl-cta-offer">
+            <a id="ctaOffer" href="#" class="btn" target="_blank" rel="noopener noreferrer">Reservar mi cupo ahora</a>
+          </template>
+        </div>
       </div>
-      <div id="sec-cierre" class="md" style="margin-top: 40px;"></div>
+      <div id="cierre">
+        <div id="sec-cierre" class="md" style="margin-top: 40px;"></div>
+      </div>
     </div>
   </section>
 
@@ -404,14 +408,56 @@
       }
     }
 
-    function wireWhatsApp() {
-      /* Número ofuscado — no queda en texto plano en el HTML */
-      var WA = "https://wa.me/" + atob("MTgwOTQwODk5OTk=");
-      var TEXT = encodeURIComponent("Hola, vengo desde code.suytex.com y quiero saber más sobre Vibe Coding Experience");
-      var href = WA + "?text=" + TEXT;
-      ["waBubble", "waFloat", "ctaHero", "ctaOffer"].forEach(function (id) {
+    /* Número ofuscado — no queda en texto plano en el HTML */
+    var WA = "https://wa.me/" + atob("MTgwOTQwODk5OTk=");
+
+    /* CTAs de los templates (hero/oferta): mensaje fijo, no contextual */
+    var CTA_HREF = WA + "?text=" + encodeURIComponent("Hola, vengo desde code.suytex.com y quiero saber más sobre Vibe Coding Experience");
+
+    function wireCtas() {
+      ["ctaHero", "ctaOffer"].forEach(function (id) {
         var el = document.getElementById(id);
-        if (el) el.href = href;
+        if (el) el.href = CTA_HREF;
+      });
+    }
+
+    /* Burbuja + flotante: label y mensaje cambian según la sección visible */
+    var CONTEXTOS = {
+      hero:           { label: "¿Hablamos? Escríbenos",           text: "Hola, vengo desde code.suytex.com y quiero saber más sobre Vibe Coding Experience" },
+      problema:       { label: "¿Te identificas? Escríbenos",     text: "Hola, tengo una idea de app y quiero saber si Vibe Coding Experience es para mí" },
+      realidad:       { label: "No te quedes atrás",              text: "Hola, quiero saber más sobre cómo crear apps con AI sin ser programador" },
+      solucion:       { label: "¿Dudas? Te explicamos",           text: "Hola, quiero saber más sobre cómo funciona Vibe Coding Experience" },
+      programa:       { label: "Pregunta por el programa",        text: "Hola, quiero información sobre el programa de 5 días de Vibe Coding Experience" },
+      transformacion: { label: "Tu app te espera",                text: "Hola, quiero construir mi propia app con Vibe Coding Experience" },
+      diferencia:     { label: "Compruébalo tú mismo",            text: "Hola, quiero saber más sobre la metodología de Vibe Coding Experience" },
+      formato:        { label: "¿Encaja con tu agenda?",          text: "Hola, quiero saber fechas y horarios de Vibe Coding Experience" },
+      oferta:         { label: "Reserva tu cupo",                 text: "Hola, quiero reservar mi cupo en Vibe Coding Experience" },
+      cierre:         { label: "Empieza hoy mismo",               text: "Hola, quiero inscribirme en Vibe Coding Experience" }
+    };
+
+    var bubbleLink = document.getElementById("waBubble");
+    var floatLink = document.getElementById("waFloat");
+
+    function setContexto(key) {
+      var c = CONTEXTOS[key] || CONTEXTOS.hero;
+      var href = WA + "?text=" + encodeURIComponent(c.text);
+      if (bubbleLink) { bubbleLink.textContent = c.label; bubbleLink.href = href; }
+      if (floatLink) floatLink.href = href;
+    }
+
+    function observeSections() {
+      if (!("IntersectionObserver" in window)) return;
+      var ratios = {};
+      var secObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { ratios[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0; });
+        var top = null, max = 0;
+        Object.keys(ratios).forEach(function (id) { if (ratios[id] > max) { max = ratios[id]; top = id; } });
+        if (top) setContexto(top);
+      }, { threshold: [0, 0.25, 0.5, 0.75, 1] });
+
+      Object.keys(CONTEXTOS).forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) secObserver.observe(el);
       });
     }
 
@@ -436,11 +482,15 @@
 
         slotIn('tpl-cta-hero', '[data-slot="cta-hero"]');
         slotIn('tpl-cta-offer', '[data-slot="cta-offer"]');
-        wireWhatsApp();
+
+        wireCtas();
+        setContexto("hero");
+        observeSections();
       })
       .catch(function (e) {
         console.error('No se pudo cargar assets/content.txt:', e);
-        wireWhatsApp();
+        wireCtas();
+        setContexto("hero");
       });
   })();
   </script>
